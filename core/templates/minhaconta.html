@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Minha Conta{% endblock %}
+
+{% block content %}
+
+<h1 align="center" >LOGIN</h1>
+    
+    <div class="tela-login">
+        
+        <form method="post">
+            <span>E-mail</span>
+            <input type="text" name="nome" placeholder="Digite o e-mail ou usuário">
+            <p></p>
+            <span>Senha</span>
+            <input style="margin-top: 10px;" type="password" name="senha" placeholder="Digite sua senha">
+            <p></p>
+            <button style="margin-left: 130px; margin-top: 25px;" type="submit">Entrar</button>
+            <p></p>
+            <span style="margin-left:70px;" >Ainda não tem cadastro?</span>
+             
+            <a href="{% url 'cadastro' %}">Clique Aqui</a>        
+        </form>
+
+    </div>
+
+
+{% endblock %}
+</body>
+</html>
+
+

@@ -1,88 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nossos Cupcakes</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-image: url('fundo.png'); /* Caminho para sua imagem de fundo */
-            background-size: cover;
-            background-position: center;
-        }
-        .navbar {
-            overflow: hidden;
-            background-color: #f5f5f5;
-            display: flex;
-            justify-content: center;
-        }
-
-
-        .navbar a {
-            float: left;
-            display: block;
-            color: black;
-            text-align: center;
-            padding: 40px 20px;
-            text-decoration: none;
-        }
-        .navbar a:hover {
-            background-color: pink;
-            color: black;
-        }
-
-        .content {
-            padding: 30px;
-        }
-        .cupcake-item {
-            display: flex;
-            margin-bottom: 20px;
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .cupcake-item img {
-            height: 120px;
-            width: 120px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-right: 20px;
-        }
-        .cupcake-item .details {
-            flex: 1;
-        }
-        .cupcake-item h3 {
-            margin: 0;
-            margin-bottom: 10px;
-        }
-        .cupcake-item p {
-            margin: 5px 0;
-        }
-        .cupcake-item .price {
-            font-weight: bold;
-            color: #e67e22;
-        }
-    </style>
+    <title>Loja de Cupcakes</title>
+    
 </head>
 <body>
-
-    <div class="navbar">
-        <img src="images/img_cupcake.png" alt="Logo Início" style="height: 100px; margin: 0 10px; margin-left: 80px; margin-right: 40px;">
-        <a href="#sobre">SOBRE |</a>
-        <a href="#cupcakes">CUPCAKES |</a>
-        <a href="#entrega">ENTREGA |</a>
-        <a href="#minhaconta">MINHA CONTA |</a>
-        <img src="images/carrinho.png" alt="Logo Fim" style="height: 50px; margin: 0 10px; margin-left: auto; margin-right: 80px; padding: 20px;">
-    </div>
-
+{% block content %}
     <div class="content" id="cupcakes">
         <h1>Nossos Cupcakes</h1>
         <div class="cupcake-item">
-            <img src="images/cup8.jpg" alt="Cupcake de Chocolate">
+            <img src="{% static 'images/cup8.jpg' %}" alt="Cupcake de Chocolate">
             <div class="details">
                 <h3>Cupcake de Chocolate</h3>
                 <p>Delicioso cupcake de chocolate com cobertura de ganache.</p>
@@ -91,7 +22,7 @@
         </div>
 
         <div class="cupcake-item">
-            <img src="images/cup6.jpg" alt="Cupcake de Baunilha">
+            <img src="{% static 'images/cup6.jpg' %}" alt="Cupcake de Baunilha">
             <div class="details">
                 <h3>Cupcake de Baunilha</h3>
                 <p>Saboroso cupcake de baunilha com cobertura de buttercream.</p>
@@ -100,7 +31,7 @@
         </div>
 
         <div class="cupcake-item">
-            <img src="images/cup2.png" alt="Cupcake Red Velvet">
+            <img src="{% static 'images/cup2.png' %}" alt="Cupcake Red Velvet">
             <div class="details">
                 <h3>Cupcake Red Velvet</h3>
                 <p>Clássico cupcake red velvet com cobertura de cream cheese.</p>
@@ -109,7 +40,7 @@
         </div>
 
         <div class="cupcake-item">
-            <img src="images/cup9.webp" alt="Cupcake de Limão">
+            <img src="{% static 'images/cup9.webp' %}" alt="Cupcake de Limão">
             <div class="details">
                 <h3>Cupcake de Limão</h3>
                 <p>Refrescante cupcake de limão com cobertura de merengue.</p>
@@ -118,7 +49,7 @@
         </div>
 
         <div class="cupcake-item">
-            <img src="images/cup4.png" alt="Cupcake de Morango">
+            <img src="{% static 'images/cup4.png' %}" alt="Cupcake de Morango">
             <div class="details">
                 <h3>Cupcake de Morango</h3>
                 <p>Delicioso cupcake de morango com pedaços de fruta e cobertura de chantilly.</p>
@@ -127,7 +58,7 @@
         </div>
 
         <div class="cupcake-item">
-            <img src="images/cup10.jpg" alt="Cupcake de Cenoura com brigadeiro">
+            <img src="{% static 'images/cup10.jpg' %}" alt="Cupcake de Cenoura com brigadeiro">
             <div class="details">
                 <h3>Cupcake de Cenoura</h3>
                 <p>Cupcake de cenoura com cobertura de brigadeiro e nozes.</p>
@@ -136,7 +67,7 @@
         </div>
 
         <div class="cupcake-item">
-            <img src="images/cup3.jpg" alt="Cupcake de Coco">
+            <img src="{% static 'images/cup3.jpg' %}" alt="Cupcake de Coco">
             <div class="details">
                 <h3>Cupcake de Coco</h3>
                 <p>Saboroso cupcake de coco com cobertura de creme de coco.</p>
@@ -145,7 +76,7 @@
         </div>
 
         <div class="cupcake-item">
-            <img src="images/cup7.webp" alt="Cupcake de Maracujá">
+            <img src="{% static 'images/cup7.webp' %}" alt="Cupcake de Maracujá">
             <div class="details">
                 <h3>Cupcake de Maracujá</h3>
                 <p>Delicioso cupcake de maracujá com cobertura de maracujá e chocolate branco.</p>
@@ -154,7 +85,7 @@
         </div>
         <h1>Nossas Opções Veganas</h1>
         <div class="cupcake-item">
-            <img src="images/cup99.webp" alt="Cupcake Vegano de Chocolate">
+            <img src="{% static 'images/cup99.webp' %}" alt="Cupcake Vegano de Chocolate">
             <div class="details">
                 <h3>Cupcake Vegano de Chocolate</h3>
                 <p>Delicioso cupcake de chocolate feito com ingredientes 100% veganos, coberto com ganache de chocolate vegano e decorado com raspas de chocolate amargo.</p>
@@ -163,7 +94,7 @@
         </div>
 
         <div class="cupcake-item">
-            <img src="images/cup1.png" alt="Cupcake Vegano de Limão com Coco">
+            <img src="{% static 'images/cup1.png' %}" alt="Cupcake Vegano de Limão com Coco">
             <div class="details">
                 <h3>Cupcake Vegano de Limão com Coco</h3>
                 <p>Refrescante cupcake vegano de limão, com cobertura de creme de coco e raspas de limão, perfeito para quem busca um sabor leve e tropical.</p>
@@ -172,6 +103,7 @@
         </div>
         </div>
     </div>
+{% endblock %}
 
 </body>
 </html>

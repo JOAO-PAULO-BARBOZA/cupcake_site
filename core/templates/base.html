@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Loja de Cupcakes{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <!-- COMEÇO DA BARRA DE MENU -->
+    <div class="barra">
+        <img class="logoprincipal" src="{% static 'images/img_cupcake.png' %}" alt="Logo Início">
+        <a href="{% url 'home' %}">HOME |</a>
+        <a href="{% url 'sobre' %}">SOBRE |</a>
+        <a href="{% url 'cupcakes' %}">CUPCAKES |</a>
+        <a href="{% url 'entrega' %}">ENTREGA |</a>        
+        <a href="{% url 'minhaconta' %}">MINHA CONTA |</a>
+        <img class="logocarrinho"src="{% static 'images/carrinho.png' %}" alt="Logo Fim">
+    </div>
+    <!-- FIM DA BARRA DE MENU -->
+
+    <div class="container" style="margin-top: 50px;">
+        {% block content %}
+        <!-- O conteúdo específico de cada página será inserido aqui -->
+        {% endblock %}
+    </div>
+</body>
+</html>
+

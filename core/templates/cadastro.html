@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Minha Conta{% endblock %}
+
+{% block content %}
+
+<h1 align="center">CADASTRE-SE</h1>
+    
+    <div class="tela-cadastro">
+        
+        <form method="post">
+            {% csrf_token %}
+            <span>Nome</span>
+            <input type="text" name="nome" placeholder="Digite seu nome">
+            <p></p>
+            <span>Sobrenome</span>
+            <input  style="margin-left: 20px;" type="text" name="sobrenome" placeholder="Digite seu sobrenome">
+            <p></p>
+            <span>E-mail</span>
+            <input  type="email" name="email" placeholder="Informe o e-mail">
+            <p></p>
+            <span>Senha</span>
+            <input type="password" name="senha" placeholder="Informe uma senha">
+            <p></p>
+            <span>Confirmar</span>
+            <input style="margin-left: 35px;" type="password" name="confirmar" placeholder="Confirme sua senha">
+            <p></p>
+            <button style="margin-left:180px; margin-top: 15px;" type="submit">Cadastrar</button>
+
+            <p></p>
+        </form>
+
+    </div>
+
+
+{% endblock %}
+</body>
+</html>
