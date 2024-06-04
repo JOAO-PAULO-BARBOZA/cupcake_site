@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import index, minhaconta, sobre, cupcakes, base, entrega, cadastro
+from django.contrib.auth.views import LogoutView
+from .views import index, minhaconta, sobre, cupcakes, base, entrega, cadastro, minhaconta_logado
 
 urlpatterns = [
     path('', index, name='home'),
@@ -9,5 +10,7 @@ urlpatterns = [
     path('cupcakes', cupcakes, name='cupcakes'),
     path('entrega', entrega, name='entrega'),
     path('cadastro', cadastro, name='cadastro'),
+    path('minhaconta_logado', minhaconta_logado, name='minhaconta_logado'),
+    path('logout/', LogoutView.as_view(next_page='minhaconta'), name='logout'),
 
 ]

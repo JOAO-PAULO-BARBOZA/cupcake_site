@@ -1,12 +1,52 @@
 {% extends 'base.html' %}
-
-{% block title %}Minha Conta{% endblock %}
+{% load bootstrap4 %}
+{% block title %}Cadastro{% endblock %}
 
 {% block content %}
 
 <h1 align="center">CADASTRE-SE</h1>
     
-    <div class="tela-cadastro">
+<div class="tela-cadastro">
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button style="margin-left: 150px; margin-top: 30px;" type="submit" class="btn btn-primary mt-3">Cadastrar</button>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--<div class="tela-cadastro">
         
         <form method="post">
             {% csrf_token %}
@@ -30,9 +70,13 @@
             <p></p>
         </form>
 
-    </div>
+    </div> !-->
 
 
 {% endblock %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </body>
 </html>
