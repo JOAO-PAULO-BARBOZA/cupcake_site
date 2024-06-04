@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+
+{% block title %}Contato{% endblock %}
+
+
+{% block content %}
+{% bootstrap_css %}
+<h2 align="center"> DEIXE SUA MENSAGEM </h2>
+<div class="container">
+    {% bootstrap_messages %}
+    <form action="{% url 'contato' %}" method="POST" autocomplete="off">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type="submit"> Enviar Mensagem</button>
+    </form>
+</div>
+
+
+{% bootstrap_javascript jquery='full' %}
+{% endblock %}

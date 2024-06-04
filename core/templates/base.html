@@ -10,6 +10,7 @@
 </head>
 <body>
     <!-- COMEÇO DA BARRA DE MENU -->
+     <header>
     <div class="barra">
         <img class="logoprincipal" src="{% static 'images/img_cupcake.png' %}" alt="Logo Início">
         <a href="{% url 'home' %}">HOME |</a>
@@ -19,9 +20,11 @@
         <a href="{% url 'minhaconta' %}">MINHA CONTA |</a>
         <img class="logocarrinho"src="{% static 'images/carrinho.png' %}" alt="Logo Fim">
     </div>
+     </header>
+
     <!-- FIM DA BARRA DE MENU -->
 
-    <div class="container" style="margin-top: 50px;">
+    <div>
         {% block content %}
         <!-- O conteúdo específico de cada página será inserido aqui -->
         {% endblock %}

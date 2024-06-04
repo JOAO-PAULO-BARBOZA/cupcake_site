@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 from django.contrib.auth import login, authenticate
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, ContatoForm
 
 
 def index(request):
@@ -28,7 +29,7 @@ def minhaconta(request):
                 return redirect('minhaconta_logado')  # Altere para a página desejada
     else:
         form = LoginForm()
-    return render(request, 'minhaconta.html', {'form': form})
+        return render(request, 'minhaconta.html', {'form': form})
 
 
 def cupcakes(request):
@@ -61,6 +62,20 @@ def cadastro(request):
 def minhaconta_logado(request):
     return render(request, 'minhaconta_logado.html')
 
+
+def contato(request):
+    form = ContatoForm(request.POST or None)
+    if str(request.method) == 'POST':
+        if form.is_valid():
+            form.send_mail()
+            messages.success(request, 'Mensagem enviada com sucesso')
+            form = ContatoForm()
+        else:
+            messages.error(request, 'Erro ao enviar Mensagem')
+    context = {
+        'form': form
+    }
+    return render(request, 'contato.html', context)
 
 
 
