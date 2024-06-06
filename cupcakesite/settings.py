@@ -130,7 +130,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Configuração de email
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 """
