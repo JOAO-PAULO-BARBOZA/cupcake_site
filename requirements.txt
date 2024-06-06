@@ -30,6 +30,8 @@ defusedxml==0.7.1
 distlib==0.3.4
 distro==1.7.0
 Django==4.1.7
+django-bootstrap4==24.3
+django-stdimage==6.0.2
 entrypoints==0.4
 executing==2.0.1
 fasteners==0.14.1
@@ -40,6 +42,7 @@ fqdn==1.5.1
 fs==2.4.12
 future==0.18.2
 gast==0.5.2
+gunicorn==22.0.0
 h11==0.14.0
 html5lib==1.1
 httpcore==1.0.5
@@ -154,6 +157,7 @@ wcwidth==0.2.5
 webcolors==1.12
 webencodings==0.5.1
 websocket-client==1.5.0
+whitenoise==6.6.0
 widgetsnbextension==2.0.0
 xdg==5.0.0
 zipp==1.0.0
