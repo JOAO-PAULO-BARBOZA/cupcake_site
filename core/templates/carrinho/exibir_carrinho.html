@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}Meu Carrinho{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Meu Carrinho</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Decoração</th>
+                <th>Cobertura</th>
+                <th>Preço Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in itens %}
+            <tr>
+                <td>{{ item.produto.nome }}</td>
+                <td>{{ item.quantidade }}</td>
+                <td>{{ item.get_decoracao_display }}</td>
+                <td>{{ item.get_cobertura_display }}</td>
+                <td>R${{ item.preco_total }}</td>
+                <td><a href="{% url 'excluir_item_carrinho' item.id %}" class="btn btn-danger">Excluir</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p></p>
+    <h3 align="center"><a href="{% url 'excluir_todos_itens_carrinho' %}" class="btn btn-danger">Excluir Todos</a></h3>
+    <p></p>
+    <a href="{% url 'checkout' %}" class="btn btn-primary">Finalizar Compra</a>
+</div>
+{% endblock %}

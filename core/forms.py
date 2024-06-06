@@ -2,6 +2,7 @@ from django import forms
 from django.core.mail.message import EmailMessage
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from .models import ItemCarrinho
 
 
 class ContatoForm(forms.Form):
@@ -98,3 +99,40 @@ class RegisterForm(UserCreationForm):
 class LoginForm(forms.Form):
     username = forms.CharField(label='Usuário')
     password = forms.CharField(label='Senha', widget=forms.PasswordInput)
+
+
+class CheckoutForm(forms.Form):
+    endereco = forms.CharField(max_length=255)
+    cidade = forms.CharField(max_length=100)
+    estado = forms.CharField(max_length=2)
+    cep = forms.CharField(max_length=10)
+
+
+class ItemCarrinhoForm(forms.ModelForm):
+    class Meta:
+        model = ItemCarrinho
+        fields = ['quantidade', 'decoracao', 'cobertura']
+        widgets = {
+            'quantidade': forms.NumberInput(attrs={'min': 1}),
+            'decoracao': forms.Select(),
+            'cobertura': forms.Select(),
+        }
+
+
+class CheckoutForm(forms.Form):
+    METODO_PAGAMENTO_CHOICES = [
+        ('cartao_credito', 'Cartão de Crédito'),
+        ('pix', 'PIX'),
+    ]
+
+    metodo_pagamento = forms.ChoiceField(choices=METODO_PAGAMENTO_CHOICES, widget=forms.RadioSelect)
+    endereco = forms.CharField(max_length=255, required=False)
+    cidade = forms.CharField(max_length=100, required=False)
+    estado = forms.CharField(max_length=100, required=False)
+    cep = forms.CharField(max_length=10, required=False)
+
+    # Campos de cartão de crédito
+    nome_no_cartao = forms.CharField(max_length=100, required=False)
+    numero_do_cartao = forms.CharField(max_length=16, required=False)
+    validade = forms.CharField(max_length=5, required=False)
+    cvv = forms.CharField(max_length=3, required=False)

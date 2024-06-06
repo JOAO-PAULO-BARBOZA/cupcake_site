@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}Detalhes do Produto{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ produto.nome }}</h1>
+    <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" class="img-fluid">
+    <p>{{ produto.descricao }}</p>
+    <p>Preço: R$ {{ produto.preco }}</p>
+    <p>Quantidade disponível: {{ produto.quantidade }}</p>
+    <a href="{% url 'adicionar_ao_carrinho' produto.id %}" class="btn btn-success">Adicionar ao Carrinho</a>
+</div>
+{% endblock %}

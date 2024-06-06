@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+<h2>Checkout</h2>
+<form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+    <div id="cartao_credito_fields" style="display: none;">
+        <h3>Informações do Cartão de Crédito</h3>
+        {% bootstrap_field form.nome_no_cartao %}
+        {% bootstrap_field form.numero_do_cartao %}
+        {% bootstrap_field form.validade %}
+        {% bootstrap_field form.cvv %}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Finalizar Compra</button>
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var metodoPagamentoFields = document.querySelectorAll('input[name="metodo_pagamento"]');
+        var cartaoCreditoFields = document.getElementById('cartao_credito_fields');
+
+        metodoPagamentoFields.forEach(function (field) {
+            field.addEventListener('change', function () {
+                if (this.value === 'cartao_credito') {
+                    cartaoCreditoFields.style.display = 'block';
+                } else {
+                    cartaoCreditoFields.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock %}

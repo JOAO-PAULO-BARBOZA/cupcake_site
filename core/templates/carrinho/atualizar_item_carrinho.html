@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+<h2>Seu Carrinho</h2>
+<form method="post">
+    {% csrf_token %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for form in itens_forms %}
+
+            <tr>
+                <td>{{ form.instance.produto.nome }}</td> 
+
+                <td>{{ form.quantidade }}</td>
+                <td>{{ form.instance.preco_total }}</td>
+                <td><a href="#excluir_item_carrinho" class="btn btn-danger">Excluir</a>
+</button><td>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="#excluir_todos_itens_carrinho" class="btn btn-danger">Excluir Todos   
+    <p></p>
+    <button type="submit" class="btn btn-primary">Finalizar Compra</button>
+
+</form>
+<a href="#finalizar_compra" class="btn btn-success">Finalizar Compra</a>
+{% endblock %}

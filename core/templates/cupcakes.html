@@ -1,109 +1,78 @@
 {% extends 'base.html' %}
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja de Cupcakes</title>
-    
-</head>
-<body>
+
+
+{% block title %}Lista de Cupcakes{% endblock %}
+
 {% block content %}
-    <div class="content" id="cupcakes">
-        <h1>Nossos Cupcakes</h1>
-        <div class="cupcake-item">
-            <img src="{% static 'images/cup8.jpg' %}" alt="Cupcake de Chocolate">
-            <div class="details">
-                <h3>Cupcake de Chocolate</h3>
-                <p>Delicioso cupcake de chocolate com cobertura de ganache.</p>
-                <p class="price">R$ 5,00</p>
-            </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <h3>Filtros</h3>
+            <form method="get">
+                <div class="form-group">
+                    <label for="categoria">Categoria</label>
+                    <select class="form-control" id="categoria" name="categoria">
+                        <option value="">Todas</option>
+                        <option value="tradicional">Tradicional</option>
+                        <option value="vegano">Vegano</option>
+                        <option value="sem_glutem">Sem Glúten</option>
+                    </select>
+                </div>
+                    </select>
+                <div class="form-group">
+                    <label for="sabor">Sabor</label>
+                    <select class="form-control" id="sabor" name="sabor">
+                        <option value="">Todos</option>
+                        <option value="chocolate">Chocolate</option>
+                        <option value="morango">Morango</option>
+                        <option value="baunilha">Baunilha</option>
+                        <option value="maracuja">Maracujá</option>
+                        <option value="coco">Coco</option>
+                        <option value="limao">Limão</option>
+                        <option value="cenoura">Cenoura</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
+            </form>
+            <p>----------------------------------------------------------------------</p>
         </div>
-
-        <div class="cupcake-item">
-            <img src="{% static 'images/cup6.jpg' %}" alt="Cupcake de Baunilha">
-            <div class="details">
-                <h3>Cupcake de Baunilha</h3>
-                <p>Saboroso cupcake de baunilha com cobertura de buttercream.</p>
-                <p class="price">R$ 4,50</p>
+        <div class="col-md-9">
+            <h3>Nossos Cupcakes</h3>
+            <div class="row">
+                {% for produto in produtos %}
+                    <div class="col-md-4 produto-item">
+                        <div class="card mb-4 shadow-sm">
+                            <img class="card-img-top" src="{{ produto.imagem.thumb.url }}" alt="{{ produto.nome }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ produto.nome }}</h5>
+                                <p class="card-text">{{ produto.descricao }}</p>
+                                <p class="card-text"><strong>Preço: </strong>{{ produto.preco }}</p>
+                                <form method="post" action="{% url 'adicionar_ao_carrinho' produto.id %}">
+                                    {% csrf_token %}
+                                    <label for="decoracao">Decoração:</label>
+                                    <select name="decoracao">
+                                    {% for valor, texto in produto.DECORACAO_CHOICES %}
+                                    <option value="{{ valor }}">{{ texto }}</option>
+                                    {% endfor %}
+                                    </select>
+                                    <label for="cobertura">Cobertura:</label>
+                                    <select name="cobertura">
+                                    {% for valor, texto in produto.COBERTURA_CHOICES %}
+                                    <option value="{{ valor }}">{{ texto }}</option>
+                                    {% endfor %}
+                                    </select>
+                                    <button type="submit">Adicionar ao Carrinho</button>
+                                </form>
+                            </div>
+                                <p></p>
+                                <p>-------------------------------------------------------------------------</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-        </div>
-
-        <div class="cupcake-item">
-            <img src="{% static 'images/cup2.png' %}" alt="Cupcake Red Velvet">
-            <div class="details">
-                <h3>Cupcake Red Velvet</h3>
-                <p>Clássico cupcake red velvet com cobertura de cream cheese.</p>
-                <p class="price">R$ 6,00</p>
-            </div>
-        </div>
-
-        <div class="cupcake-item">
-            <img src="{% static 'images/cup9.webp' %}" alt="Cupcake de Limão">
-            <div class="details">
-                <h3>Cupcake de Limão</h3>
-                <p>Refrescante cupcake de limão com cobertura de merengue.</p>
-                <p class="price">R$ 5,50</p>
-            </div>
-        </div>
-
-        <div class="cupcake-item">
-            <img src="{% static 'images/cup4.png' %}" alt="Cupcake de Morango">
-            <div class="details">
-                <h3>Cupcake de Morango</h3>
-                <p>Delicioso cupcake de morango com pedaços de fruta e cobertura de chantilly.</p>
-                <p class="price">R$ 5,75</p>
-            </div>
-        </div>
-
-        <div class="cupcake-item">
-            <img src="{% static 'images/cup10.jpg' %}" alt="Cupcake de Cenoura com brigadeiro">
-            <div class="details">
-                <h3>Cupcake de Cenoura</h3>
-                <p>Cupcake de cenoura com cobertura de brigadeiro e nozes.</p>
-                <p class="price">R$ 4,75</p>
-            </div>
-        </div>
-
-        <div class="cupcake-item">
-            <img src="{% static 'images/cup3.jpg' %}" alt="Cupcake de Coco">
-            <div class="details">
-                <h3>Cupcake de Coco</h3>
-                <p>Saboroso cupcake de coco com cobertura de creme de coco.</p>
-                <p class="price">R$ 5,25</p>
-            </div>
-        </div>
-
-        <div class="cupcake-item">
-            <img src="{% static 'images/cup7.webp' %}" alt="Cupcake de Maracujá">
-            <div class="details">
-                <h3>Cupcake de Maracujá</h3>
-                <p>Delicioso cupcake de maracujá com cobertura de maracujá e chocolate branco.</p>
-                <p class="price">R$ 5,50</p>
-            </div>
-        </div>
-        <h1>Nossas Opções Veganas</h1>
-        <div class="cupcake-item">
-            <img src="{% static 'images/cup99.webp' %}" alt="Cupcake Vegano de Chocolate">
-            <div class="details">
-                <h3>Cupcake Vegano de Chocolate</h3>
-                <p>Delicioso cupcake de chocolate feito com ingredientes 100% veganos, coberto com ganache de chocolate vegano e decorado com raspas de chocolate amargo.</p>
-                <p class="price">R$ 9,50</p>
-            </div>
-        </div>
-
-        <div class="cupcake-item">
-            <img src="{% static 'images/cup1.png' %}" alt="Cupcake Vegano de Limão com Coco">
-            <div class="details">
-                <h3>Cupcake Vegano de Limão com Coco</h3>
-                <p>Refrescante cupcake vegano de limão, com cobertura de creme de coco e raspas de limão, perfeito para quem busca um sabor leve e tropical.</p>
-                <p class="price">R$ 8,90</p>
-            </div>
-        </div>
         </div>
     </div>
+</div>
 {% endblock %}
 
-</body>
-</html>

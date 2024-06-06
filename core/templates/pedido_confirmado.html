@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Pedido Confirmado</h2>
+<p>Seu pedido foi confirmado com sucesso!</p>
+
+{% if metodo_pagamento == 'cartao_credito' %}
+    <p>Você escolheu pagar com cartão de crédito.</p>
+{% elif metodo_pagamento == 'pix' %}
+    <p>Você escolheu pagar com PIX.</p>
+{% endif %}
+
+<a href="{% url 'home' %}" class="btn btn-primary">Voltar para a página inicial</a>
+{% endblock %}
